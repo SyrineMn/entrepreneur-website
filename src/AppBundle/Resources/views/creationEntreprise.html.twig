@@ -1,0 +1,68 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+    <div class="row">
+       
+            <div class=" callout bgcolor">
+                <h1 class="text-center">Formalités d’enregistrement de Société Commerciale</h1>
+               
+                <p class="text-center">Tout ce que vous devez savoir pour créer votre entreprise</p>
+            </div>
+            <!-- end welcome -->
+       
+    </div>
+    <!-- end row -->
+</div>
+<!-- end container -->
+
+<section class="section bt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-6 col-xs-12">
+            {% if etapes is defined %}
+            
+                {% for etape in etapes %}
+                    <a href="{{path('creation-entreprise',{'slug':etape.slug})}}" class="row">
+
+                        <div class="service-box" style="margin-bottom:1px;">
+                            <p>
+                                {{etape.nomEtape}}</p>
+                        </div>
+                        <!-- end service-box -->
+                    </a>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <!-- end row -->
+
+                {% if etape is defined %}
+                
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="case-details">
+                    <h3>
+                        {{etape.id}}.
+                        {{etape.nomEtape}}</h3>
+                    <p>
+                        {{etape.description | raw }}</p>
+
+                    <div class="feature-list">
+                        <ul>
+                            <li>Quoi Obtenir:
+                                {{etape.QuoiObtenir}}
+                            </li>
+                            <li>Cout:
+                                {{etape.cout}}</li>
+                            <li>Durée:
+                                {{etape.duree}}</li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <!-- end feature-list -->
+                </div>
+                <!-- end details -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end col -->
+    </section>
+    <!-- end section -->
+{% endblock %}

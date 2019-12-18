@@ -1,0 +1,50 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+    <div class="row">
+
+        <div class=" callout bgcolor">
+            <h1 class="text-center">
+                mes candidatures</h1>
+
+
+        </div>
+        <!-- end welcome -->
+
+    </div>
+    <!-- end row -->
+</div>
+<!-- end container -->
+
+<section class="section bt">
+    <div class="container">
+        <div class="row"><!-- end row -->
+
+
+            <!-- end details -->
+        </div>
+        <div class="col-md-10 col-sm-6 col-xs-12">
+            {% for condidature  in condidatures %}
+                <a href="{{path('voir-candidature',{'id':condidature.id})}}" class="row">
+
+                    <div class="service-box row" style="margin-bottom:1px;">
+                        <img src="{{ asset('uploads/images/'~ condidature.offreTravail.image)}} " class="col-md-4" style="height:100px; width:125px;">
+                        <p>{{condidature.updatedAt |ago}}
+                            :
+                            {{condidature.offreTravail.title}}
+                        </p>
+                        <p>{{condidature.lettreDeMotivation | striptags | raw | slice (0,110)}}
+                            ...</p>
+                    </div>
+                    <!-- end service-box -->
+                </a>
+            {% endfor %}
+        </div>
+        <div class="navigation" style="margin-left:35%;">
+            {{ knp_pagination_render(condidatures) }}
+        </div>
+        <!-- end col -->
+
+        <!-- end col -->
+    </section>
+    <!-- end section -->
+{% endblock %}

@@ -1,0 +1,28 @@
+user_homepage:
+    path:     /
+    defaults: { _controller: ArticleBundle:Default:index }
+createArticle:
+    path:     /admin/createArticle
+    defaults: { _controller: ArticleBundle:Default:create }
+    methods: [POST, GET]
+adminDashboard:
+    path:     admin/adminDashboard
+    defaults: { _controller: ArticleBundle:Default:dashboard }
+    methods: [GET, PUT]
+
+showArticle:
+    path:     admin/showArticle/{slug}
+    defaults: { _controller: ArticleBundle:Default:showArticle }
+    methods: [POST, GET]
+deleteArticle:
+    path:     admin/deleteArticle/{slug}
+    defaults: { _controller: ArticleBundle:Default:deleteArticle }
+    methods: [POST, GET]
+editArticle:
+    path:     admin/editArticle/{slug}
+    defaults: { _controller: ArticleBundle:Default:editArticle }
+    methods: [POST, GET]
+gestionActualites:
+    path:     admin/gestionActualites
+    defaults: { _controller: ArticleBundle:Default:gestionActualites }
+    methods: [POST, GET]

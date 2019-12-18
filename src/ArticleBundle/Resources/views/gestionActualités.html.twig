@@ -1,0 +1,89 @@
+{% extends "@User/layout.html.twig" %}
+{% block dashbordContent %}
+
+    <div class="container-fluid">
+   
+    <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{path('adminDashboard')}}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Gestion des actualités</li>
+        </ol>
+        <h1 class="text-primary">Gestion des actualités</h1>
+        <div class="row mb-4">
+            <div class="col-lg-9"></div>
+            <a class="btn btn-primary col-lg-2" href="{{path('createArticle')}}">
+                <i class="fas fa-file"></i>
+                <span>Créer un article</span>
+            </a>
+        </div>
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Actualités</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Crée le</th>
+                                <th>
+                                    derniére modification
+                                </th>
+
+                                <th>description</th>
+                                <th>Settings</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <!--show the articles-->
+                            {% if articles is defined %}
+                                ...
+
+                                {% for article in articles %}
+                                    <tr>
+                                        <td>{{article.title}}</td>
+                                        <td>{{article.createdAt | date ('d/m/y') }}
+                                            at
+                                            {{article.createdAt | date ('H:i') }}</td>
+                                        <td>{{article.lastUpdatedAt | date ('d/m/y') }}
+                                            at
+                                            {{article.lastUpdatedAt | date ('H:i') }}</td>
+
+                                        <td>{{article.description | slice(0, 80)| raw }}
+                                            ...</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-light dropdown-toggle" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-cog"></i>
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li class="divider">
+                                                        <a href="{{path('showArticle',{'slug':article.slug})}}">Voir</a>
+                                                    </li>
+                                                    <li class="divider">
+                                                        <a href="{{path('editArticle',{'slug':article.slug})}}">Editer</a>
+                                                    </li>
+                                                    <li class="divider">
+                                                        <a href="{{path('deleteArticle',{'slug':article.slug})}}">Supprimer</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+           
+            </div>
+
+        </div>
+    {% endblock %}

@@ -1,0 +1,108 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+  <section >
+            
+                <div class="row callout bgcolor">
+                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                        <h2>Actualités</h2>
+                        <p style="font-size:20px;"><a href="{{path('homepage')}}">Accueil</a>&nbsp;&nbsp;  <i class="fa fa-chevron-right" style="font-size:15px;"></i> &nbsp;&nbsp; <a href="{{path('showOffresTravail')}}"> Offres de travail </a>  <i class="fa fa-chevron-right" style="font-size:15px;"></i> &nbsp;&nbsp;  {{offreTravail.title}}<P>  
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+           
+        </section>
+    <section class="section bt">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div class="media-box">
+                        {% set runtimeConfig = {"thumbnail": {"size": [1300, 650] }} %}
+                        <img src="{{ asset('uploads/images/'~ offreTravail.image) | imagine_filter('my_thumb', runtimeConfig)}}" alt="" class="img-responsive">
+                    </div>
+                    <!-- end media box -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+            <hr class="invis2">
+
+            <div class="row">
+               <!-- <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="text-box-2">
+                        <h3>Postuler</h3>
+                        <form class="contactform" method="post" role="form">
+                            <div class="form-group">
+                                <label for="lettredemotivation">
+                                    Lettre de motivation
+                                </label>
+                                <textarea class="form-control" id="message" name="lettredemotivation" placeholder="lettre de motivation" required rows="7"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="cv">
+                                    CV
+                                </label>
+                                <input class="form-control" id="name" name="lettredemotivation" placeholder="lettre de motivation" required type="file">
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-block" id="submit" name="submit" value="submit"/>
+                        </form>
+                    </div>
+                </div> -->
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="text-box-2">
+                        <h3>Postuler</h3>
+                        <!-- formulaire candidatures -->
+                       {{form_start(form)}}
+                        <div class="form-group">
+                       <label for="lettreDeMotivation"> Lettre de motivation</label> <br>
+                            {{form_widget(form.lettreDeMotivation, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                         <div class="form-group">
+                         <label for="cv">CV</label>
+                            {{form_widget(form.cvFile,{'attr': {'class': 'form-control'}})}}
+                        </div>
+                        <div class="form-group" style="margin-top:30px;">
+                        {{form_widget(form.submit,{'attr': {'class': 'btn btn-block btn-primary'}})}}
+                        </div>
+                       {{form_end(form)}}
+                    </div>
+                </div>
+               
+
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="text-box-2">
+                        <div class="blog-meta">
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="fa fa-history"></i>
+                                    {{offreTravail.postedAt | ago }}</li>
+                                <li>
+                                    <i class="fa fa-location-arrow"></i>
+                                    {{offreTravail.location}}</li>
+                            </ul>
+                        </div>
+                        <!-- end meta -->
+                        <h4 class="text-primary">
+                            {{offreTravail.recruter}}</h4>
+                        <h3 class="text-info">{{offreTravail.title}}</h3>
+
+                        <p>
+                            {{offreTravail.description | raw}}
+                        </p>
+                    </div>
+                    <!-- end text-box -->
+                </div>
+                <!-- end col -->
+            </div>
+        </div>
+        <!-- end container -->
+
+    </section>
+    <!-- end section -->
+    <section cl class="section lb">
+        <div class="container"></div>
+        <!-- end container -->
+    </section>
+    <!-- end section -->
+{% endblock %}

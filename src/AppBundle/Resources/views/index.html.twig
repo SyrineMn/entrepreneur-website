@@ -1,0 +1,301 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+
+    <section class="section transheader homepage parallax" data-stellar-background-ratio="0.5" style="background-image:url('{{asset('index.jpg')}}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                    <h2 style="color:#1ED7C4;">Envie d'entrepredre en Tunisie ?
+                    </h2>
+                    <h3 style="color:white; font-style: italic;">Toutes les formalités pour démarrer votre entreprise d'un point de vue légal</h3>
+                    <form class="calculateform">
+                        <div class="item-box">
+                            <div class="item-top form-inline">
+                                <div class="form-group">
+                                    <div class="input-group2">
+                                        <span class="input-addon">
+                                            <i class="fa fa-link"></i>
+                                        </span>
+                                        <input class="form-control" id="urladres" name="url" type="url">
+                                    </div>
+                                </div>
+                                <input class="btn btn-default" name="send" type="submit" value="Analysis"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end section -->
+
+
+    <section class="section overfree">
+        <div class="row service-list text-center">
+            <div class="col-md-4 col-sm-12 col-xs-12 first">
+                <div class="service-wrapper wow fadeIn">
+                    <i class="fa fa-balance-scale"></i>
+                    <div class="service-details">
+                        <h4>
+                            <a href="service-01.html" title="">Formes juridiques</a>
+                        </h4>
+                        <p>Les formes juridiques des différents types de sociétés commerciales en Tunisie
+                        </p>
+                    </div>
+                </div>
+                <!-- end service-wrapper -->
+            </div>
+            <!-- end col -->
+
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="service-wrapper wow fadeIn">
+                    <i class="fa fa-cogs"></i>
+                    <div class="service-details">
+                        <h4>
+                            <a href="service-02.html" title="">Enregistrement des entreprises</a>
+                        </h4>
+                        <p>Un processus consolidé en 8 étapes clé pour créer votre SARL ou SUARL</p>
+                    </div>
+                </div>
+                <!-- end service-wrapper -->
+            </div>
+            <!-- end col -->
+
+            <div class="col-md-4 col-sm-12 col-xs-12 last">
+                <div class="service-wrapper wow fadeIn">
+                    <i class="fa fa-edit"></i>
+                    <div class="service-details">
+                        <h4>
+                            <a href="service-02.html" title="">Modification / Cessation</a>
+                        </h4>
+                        <p>Tout savoir sur les procédures de Modification  et d’arrêt d'activité de votre entreprise.</p>
+                    </div>
+                </div>
+                <!-- end service-wrapper -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+        <hr class="invis2">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="milestone-counter c1">
+                    <img alt="" class="alignleft" src="images/icon_07.png">
+                    <h3 class="stat-count">771032</h3>
+                    <p>Entreprises</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="milestone-counter c2">
+                    <img alt="" class="alignleft" src="images/icon_08.png">
+                    <h3 class="stat-count">304</h3>
+                    <p>Online Strategy</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="milestone-counter c3">
+                    <img alt="" class="alignleft" src="images/icon_09.png">
+                    <h3 class="stat-count">890</h3>
+                    <p>Great Results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end container -->
+</section>
+<!-- end section -->
+
+<section class="section lb nopad spotlight style1">
+    <div class="image col-md-4 hidden-sm hidden-xs">
+        <img alt="" src="{{asset('asl.jpg')}}"/>
+    </div>
+    <div class="content">
+        <h2>Trouvez une aide pour toutes vos démarches</h2>
+        <p>ABC-Entrepreneur vous accompagne dans vos prises de décisions grâce à ces outils, simulateurs et formulaires. Découvrez si le statut d'Auto-Entrepreneur est adapté à votre situation, étudiez les aides auxquelles vous avez droit, testez votre niveau de protection sociale ... toutes les réponses à vos questions se trouvent ici.</p>
+        <a class="btn btn-transparent" href="{{path('boite-outils')}}">En savoir plus
+            <i class="fa fa-angle-double-right"></i>
+        </a>
+    </div>
+</section>
+
+<section class="section lb" style="background-color:#343837; height:600px;">
+    <div class="container" style="color:white;">
+        <div class="section-title text-center">
+            <h3 class="text-primary">Démarches de création d'entreprises en Tunisie</h3>
+            <hr>
+        </div>
+        <!-- end section-title -->
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="feature-list">
+
+                    <ul>
+                        <li>Ouverture d'un compte bancaire indisponible pour déposer les apports en numéraire</li>
+                        <li>
+                            Enregistrement des statuts de l'entreprise à la recette</li>
+                        <li>Déclaration d'existence au Bureau de Controle des impots
+                        </li>
+                        <li>dépot au greffe du Tribunal de première territorialement compètent</li>
+
+                    </ul>
+                </div>
+                <!-- end feature-list -->
+            </div>
+            <!-- end col -->
+
+            <div class="col-md-6 col-sm-12">
+                <div class="feature-list">
+                    <ul>
+                        <li>publication de l'avis de constitution dans le J.O.R.T</li>
+                        <li>Immatriculation au Registre du Commerce Tribual de première Instance</li>
+                        <li>
+                            Affiliation de la société à la C.N.S.S</li>
+                        <li>éclaration des établissements auprès de l'inspection de travail</li>
+                    </ul>
+                </div>
+                <!-- end feature-list -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end section -->
+<section class="section lb nopad spotlight style1">
+    <div class="content">
+        <h2>Toute l'actualité de l'entrepreneur</h2>
+        <p>Retrouvez toutes les actualités autour du régime de l’auto-entreprise (micro-entreprise) rédigées par nos experts. Actualité, Questions concrètes, conseils utiles et pratiques, tribunes d’experts ou évènements et partenariats clé d’Auto-Entrepreneur.fr, vous retrouverez tout !</p>
+        <a class="btn btn-transparent" href="{{path('showBlog')}}">En savoir plus
+            <i class="fa fa-angle-double-right"></i>
+        </a>
+    </div>
+
+    <div class="image col-md-7 hidden-sm hidden-xs">
+        <img alt="" src="{{asset('diagram.jpg') | imagine_filter('my_thumb')}}"/>
+    </div>
+</section>
+
+
+<section class="section overfree">
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 mb30">
+            <div class="faqs-template">
+                <div class="panel-group" id="accordion">
+                    <h1>F.A.Q</h1>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-parent="#accordion" data-toggle="collapse" href="#collapseOne">1. Puis je m’adresser au guichet unique de l’API pour l’enregistrement de ma société si mon activité n’est pas soumise à la déclaration préalable ?
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse in" id="collapseOne">
+                            <div class="panel-body">
+                                <p>Oui, les guichets uniques de l’API présents dans tous les gouvernorats de la Tunisie sont ouverts au public, et aux entrepreneurs des sociétés commerciales, industrielles et de services.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">2. Suis-je obligé(e) d’enregistrer le contrat de location de mon siège social ?
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseTwo">
+                            <div class="panel-body">
+                                <p>Le contrat de location doit obligatoirement être signé par les deux parties avec une signature légalisée à la municipalité et enregistré aux frais du locataire à la recette des finances territorialement compétente.</p>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-parent="#accordion" data-toggle="collapse" href="#collapseThree">3. Ai-je besoin d’une préalable à l’enregistrement de ma société ?
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseThree">
+                        <div class="panel-body">
+                            <p>Non, ce n’est pas toujours le cas, les autorisations activités soumises à une autorisation préalable font l’objet d’une liste disponible aux bureaux de l’API.</p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-parent="#accordion" data-toggle="collapse" href="#collapseFour">4. L’enregistrement des statuts de la société est-il payant ?
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseFour">
+                    <div class="panel-body">
+                        <p>Oui. L’enregistrement des statuts se fait moyennant le payement de la somme de 150.000DT, d’autres frais sont demandés pour l’obtention du registre de commerce et la publication de l’annonce de création au JORT.</p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-parent="#accordion" data-toggle="collapse" href="#collapseFive">5. Le payement des frais d’enregistrement se fait uniquement à la poste ?
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" id="collapseFive">
+                <div class="panel-body">
+                    <p>Effectivement, depuis 2015, le payement des frais relatifs aux registre de commerce ne se fais qu’auprès des bureaux de poste.</p>
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-parent="#accordion" data-toggle="collapse" href="#collapseFour">6. Puis demander à un ami de réaliser les procédures d’enregistrement de ma société ?
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" id="collapseFour">
+                <div class="panel-body">
+                    <p>Il est possible de mandater quelqu’un pour faire toute la procédure de création de société à condition de lui préparer un mandat dûment signé à la municipalité</p>
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-parent="#accordion" data-toggle="collapse" href="#collapseFour">7. Y a-t-il un programme d’encouragement pour les jeunes entrepreneurs ?
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" id="collapseFour">
+                <div class="panel-body">
+                    <p>Oui, plusieurs programmes d’incitation à l’investissement offrent des encouragements fiscaux, et autres.</p>
+                </p>
+            </div>
+        </div>
+    </div>
+</section></div></div><!-- end faqs-template --></div><!-- end col --></div><!-- end row -->
+{% endblock %}

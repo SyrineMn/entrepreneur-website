@@ -1,0 +1,107 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+    <div class="wrapper">
+
+        <section >
+            
+                <div class="row callout bgcolor">
+                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                        <h2>Actualités</h2>
+                        <p style="font-size:20px;"><a href="{{path('homepage')}}">Accueil</a>&nbsp;&nbsp;  <i class="fa fa-chevron-right" style="font-size:15px;"></i> &nbsp;&nbsp; <a href="{{path('showBlog')}}"> Actualités</a>  &nbsp;&nbsp;<i class="fa fa-chevron-right" style="font-size:15px;"></i>  &nbsp;&nbsp;{{article.title}}<P>  
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+           
+        </section>
+        <!-- end section -->
+
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar col-md-4 col-sm-4">
+                        <div class="widget clearfix">
+                            <h4 class="widget-title">Subscribe</h4>
+                            <div class="newsletter-widget">
+                                <p>You can opt out of our newsletters at any time. See our privacy policy.</p>
+                                <form class="form-inline" role="search">
+                                    <div class="form-1">
+                                        <input class="form-control" placeholder="Enter email here.." type="text">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- end newsletter -->
+                        </div>
+                        <!-- end widget -->
+
+                        <div class="widget clearfix">
+                            <h4 class="widget-title">ADVERTISING</h4>
+                            <div class="category-widget">
+                                <img alt="" class="img-responsive img-thumbnail" src="images/banner.gif">
+                            </div>
+                            <!-- end category -->
+                        </div>
+                        <!-- end widget -->
+
+                        <div class="widget clearfix">
+                            <h4 class="widget-title">Blog Categories</h4>
+                            <div class="category-widget">
+                                <ul>
+                                    {% for category in categories %}
+                                        <li>
+                                            <a href="#">{{category.nameOfCategory}}</a>
+                                        </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+                            <!-- end category -->
+                        </div>
+                        <!-- end widget -->
+                    </div>
+                    <!-- end col -->
+
+                    <div class="content col-md-8 blog-alt">
+                        <div class="blog-box clearfix">
+                            <div class="media-box">
+                                <img alt="" class="img-responsive img-thumbnail" src="upload/blog_alt_06.jpg">
+                            </div>
+                            <!-- end media-box -->
+                            <div class="blog-single">
+                                <div class="blog-meta">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-calendar-o"></i>
+                                                Crée
+                                                {{article.createdAt | ago }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-folder-open-o"></i>
+                                                {{category.nameOfCategory}}
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <!-- end meta -->
+                                <h3>{{article.title}}</h3>
+                                {% set runtimeConfig = {"thumbnail": {"size": [800, 400] }} %}
+                                <img src="{{ asset('uploads/images/'~ article.image) | imagine_filter('my_thumb', runtimeConfig)}}" alt=""/>
+                                <p>{{article.description | raw }}</p>
+
+                            </div>
+                            <!-- end blog-desc -->
+                        </div>
+                        <!-- end blogbox -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

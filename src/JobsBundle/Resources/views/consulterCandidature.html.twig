@@ -1,0 +1,24 @@
+{% extends "@User/layout.html.twig" %}
+{% block dashbordContent %}
+
+    <div class="wrapper ml-5 mr-5">
+        <a href="{{path('gestion-condidatures')}}">
+            <i class="fa fa-arrow-left" style="font-size:40px;"></i>
+        </a>
+        <h1 class="text-primary">offre de travail:
+        </h1>
+        {{condidature.offreTravail.title}}
+        <h5 class="text-secondary">candidat(e):
+        </h5>
+        {{condidature.condidat.username}}
+        <h5 class="text-secondary">email:
+        </h5>
+        {{condidature.condidat.email}}
+        <h5 class="text-secondary">lettre de motivation:</h5>
+        <br>{{condidature.lettreDeMotivation}}
+        <h5 class="text-secondary">cv:
+        </h5>
+        <a href="">
+            cv.pdf</a>
+    </div>
+{% endblock %}

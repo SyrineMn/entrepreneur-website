@@ -1,0 +1,94 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+    <div id="wrapper">
+        <div>
+
+            <section class="section transheader parallax" data-stellar-background-ratio="0.5" style="background-image:url('{{asset('sticky.jpg')}}'); background-size: 1500px 1500px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                            <h2>Offres de Travail</h2>
+                            <p style="font-size:20px;">
+                                <a href="{{path('homepage')}}">Accueil</a>
+                                &nbsp;&nbsp;
+                                <i class="fa fa-chevron-right" style="font-size:15px;"></i>
+                                &nbsp;&nbsp; Offres de travail</p>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </section>
+            <!-- end section -->
+
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="content col-md-8">
+                        {% for offreTravail in offresTravail %}
+                            <div class="blog-box clearfix row">
+                                <div class="media-box col-md-4">
+                                    {% set runtimeConfig = {"thumbnail": {"size": [600, 600]}} %}
+                                    <a href="{{path('voirOffreTravail', {'slug': offreTravail.slug})}}" title=""><img src="{{ asset('uploads/images/'~ offreTravail.image) | imagine_filter('my_thumb', runtimeConfig)}}" alt="" class="img-responsive img-thumbnail"></a>
+                                </div>
+                                <!-- end media-box -->
+                                <div class="blog-desc col-md-8">
+                                    <div class="blog-meta">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-folder-open-o"></i>
+                                                    {{offreTravail.postedAt | ago }}</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-comments-o"></i>
+                                                    {{offreTravail.location}}</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-comments-o"></i>
+                                                    {{offreTravail.recruter}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end meta -->
+                                    <h3>
+                                        <a href="{{path('voirOffreTravail', {'slug': offreTravail.slug})}}" title="">{{offreTravail.title}}</a>
+                                       
+                                       {{ app.user.username }}
+                                        {#{% if offreTravail.id in app.user.condidatures %}
+                                            <p style="color:black;">vouz avez déjà postulé
+                                            </p>
+                                        {% endif %}#}
+                                    </h3>
+                                    <p>
+                                        {{offreTravail.description | slice (0,250) | raw }}
+                                        ...</p>
+                                    <a class="readmore" href="{{path('voirOffreTravail', {'slug': offreTravail.slug})}}">Voir détails</a>
+                                </div>
+                                <!-- end blog-desc -->
+                            </div>
+                            <!-- end blogbox -->
+                        {% endfor %}
+                        <div class="navigation" style="margin-left:35%;">
+                            {{ knp_pagination_render(offresTravail) }}
+                        </div>
+
+
+                    </div>
+                    <!-- end content -->
+
+                    <div class="sidebar col-md-4 col-sm-4">
+
+
+                        
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </section>
+            <!-- end section -->
+        {% endblock %}

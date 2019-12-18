@@ -1,0 +1,188 @@
+imports:
+  - { resource: parameters.yml }
+  - { resource: security.yml }
+  - { resource: services.yml }
+  - { resource: "@UserBundle/Resources/config/services.yml" }
+  - { resource: "@ArticleBundle/Resources/config/services.yml" }
+  - { resource: "@JobsBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+  locale: fr
+  images_directory: "%kernel.root_dir%/../web/uploads/images"
+  app.path.cv_file: /uploads/cv
+framework:
+  #esi: ~
+  translator: { fallbacks: ["%locale%"] }
+  secret: "%secret%"
+  router:
+    resource: "%kernel.root_dir%/config/routing.yml"
+    strict_requirements: ~
+  form: ~
+  csrf_protection: ~
+  validation: { enable_annotations: true }
+  #serializer: { enable_annotations: true }
+  templating:
+    engines: ["twig"]
+  default_locale: "%locale%"
+  trusted_hosts: ~
+  trusted_proxies: ~
+  session:
+    # handler_id set to null will use default session handler from php.ini
+    handler_id: ~
+  fragments: ~
+  http_method_override: true
+
+# Twig Configuration
+twig:
+  debug: "%kernel.debug%"
+  strict_variables: "%kernel.debug%"
+  form_themes:
+    - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+
+# Doctrine Configuration
+doctrine:
+  dbal:
+    driver: pdo_mysql
+    host: "127.0.0.1"
+    port: "3306"
+    dbname: "autoentrepreneur"
+    user: "root"
+    password: ""
+    charset: UTF8
+    # if using pdo_sqlite as your database driver:
+    #   1. add the path in parameters.yml
+    #     e.g. database_path: '%kernel.root_dir%/data/data.db3'
+    #   2. Uncomment database_path in parameters.yml.dist
+    #   3. Uncomment next line:
+    #path: '%database_path%'
+
+  orm:
+    auto_generate_proxy_classes: "%kernel.debug%"
+    entity_managers:
+      default:
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+          gedmo_translatable:
+            type: annotation
+            prefix: Gedmo\Translatable\Entity
+            dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+            alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
+            is_bundle: false
+          gedmo_translator:
+            type: annotation
+            prefix: Gedmo\Translator\Entity
+            dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+            alias: GedmoTranslator # (optional) it will default to the name set for the mapping
+            is_bundle: false
+          gedmo_loggable:
+            type: annotation
+            prefix: Gedmo\Loggable\Entity
+            dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+            alias: GedmoLoggable # (optional) it will default to the name set for the mapping
+            is_bundle: false
+          gedmo_tree:
+            type: annotation
+            prefix: Gedmo\Tree\Entity
+            dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+            alias: GedmoTree # (optional) it will default to the name set for the mapping
+            is_bundle: false
+
+# Swiftmailer Configuration
+swiftmailer:
+  transport: "%mailer_transport%"
+  host: "127.0.0.1"
+  username: "admin"
+  password: "admin"
+  spool: { type: memory }
+
+fos_user:
+  db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+  firewall_name: main
+  user_class: UserBundle\Entity\User
+  from_email:
+    address: "autoentrepreneur@entrepreneur.com"
+    sender_name: "Demo String"
+stof_doctrine_extensions:
+  default_locale: en_US
+
+  # Only used if you activated the Uploadable extension
+  uploadable:
+    # Default file path: This is one of the three ways you can configure the path for the Uploadable extension
+    default_file_path: "%kernel.root_dir%/../web/uploads"
+
+    # Mime type guesser class: Optional. By default, we provide an adapter for the one present in the HttpFoundation component of Symfony
+    mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
+
+    # Default file info class implementing FileInfoInterface: Optional. By default we provide a class which is prepared to receive an UploadedFile instance.
+    default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
+  orm:
+    default:
+      tree: true
+      timestampable: true
+      sluggable: true
+  mongodb:
+    default: ~
+liip_imagine:
+  resolvers:
+    default:
+      web_path: ~
+
+  filter_sets:
+    cache: ~
+
+    # the name of the "filter set"
+    my_thumb:
+      # adjust the image quality to 75%
+      quality: 75
+
+      # list of transformations to apply (the "filters")
+      filters:
+        # create a thumbnail: set size to 120x90 and use the "outbound" mode
+        # to crop the image when the size ratio of the input differs
+        thumbnail: { size: [1000, 600], mode: outbound }
+
+knp_paginator:
+  page_range: 5 # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+  default_options:
+    page_name: page # page query parameter name
+    sort_field_name: sort # sort field query parameter name
+    sort_direction_name: direction # sort direction query parameter name
+    distinct: true # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    filter_field_name: filterField # filter field query parameter name
+    filter_value_name: filterValue # filter value query parameter name
+  template:
+    pagination: "@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig" # sliding pagination controls template
+    sortable: "@KnpPaginator/Pagination/sortable_link.html.twig" # sort link template
+    filtration: "@KnpPaginator/Pagination/filtration.html.twig" # filters template
+
+vich_uploader:
+  db_driver: orm
+  mappings:
+      cv_file:
+          uri_prefix: 'app.path.cv_file'
+          upload_destination: "%kernel.root_dir%/../web%app.path.cv_file%"
+          namer:
+              service: vich_uploader.namer_property
+              options: { property: "cvFile" }
+easy_admin:
+    design:
+        form_theme:
+            - '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
+            - 'VichUploaderBundle:Form:fields.html.twig'
+    entities:
+        Condidature:
+            class: JobsBundle\Entity\Condidature
+            list:
+                fields:
+                    - { property: 'cv', type: 'file', base_path: 'app.path.cv_file', template: 'cv.html.twig' }
+                    - "lettreDeMotivation"
+                    - "condidat"
+                    - "idOffreTravail"
+            form:
+                fields:
+                    - "lettreDeMotivation"
+                    - { property: 'cvFile', type: 'vich_file' }
+                    

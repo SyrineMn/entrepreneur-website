@@ -1,0 +1,76 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+    <div class="row">
+
+        <div class=" callout bgcolor">
+            <div class="row">
+                        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                          
+                            <p style="font-size:20px;">
+                                <a href="{{path('homepage')}}">Accueil</a>
+                                &nbsp;&nbsp;
+                                <i class="fa fa-chevron-right" style="font-size:15px;"></i>
+                                &nbsp;&nbsp;  <a href="{{path('mes-candidatures')}}">mes-candidature</a>  <i class="fa fa-chevron-right" style="font-size:15px;"></i>
+                                &nbsp;&nbsp; {{condidature.offreTravail.title}} </p>
+                        </div>
+
+
+        </div>
+        <!-- end welcome -->
+
+    </div>
+    <!-- end row -->
+</div>
+<!-- end container -->
+
+<section class="section bt">
+    <div class="container">
+        <div
+            class="row">
+
+            <!-- end row -->
+
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="case-details">
+              <div class="row"> <p><i class="fa fa-history"></i>{{condidature.updatedAt | ago}}</p></div>  
+                    <h3>
+                        lettre de motivation:
+                        {{condidature.offreTravail.title}}.
+                    </h3>
+                    <p>
+                        {{condidature.lettreDeMotivation | raw }}</p>
+
+                    <div class="feature-list">
+                        <ul>
+                            <li>CV:
+                                {{condidature.cv}}
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- end feature-list -->
+                </div>
+                <!-- end details -->
+            </div>
+            <div class="col-md-5 col-sm-6 col-xs-12">
+                {% for condidature  in condidatures %}
+                    <a href="{{path('voir-candidature',{'id':condidature.id})}}" class="row">
+
+                        <div class="service-box" style="margin-bottom:1px;">
+                            <p>{{condidature.offreTravail.title}}.
+                            </p>
+                        </div>
+                        <!-- end service-box -->
+                    </a>
+                {% endfor %}
+                <div class="navigation" style="margin-left:35%;">
+                    {{ knp_pagination_render(condidatures) }}
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end col -->
+    </section>
+    <!-- end section -->
+{% endblock %}

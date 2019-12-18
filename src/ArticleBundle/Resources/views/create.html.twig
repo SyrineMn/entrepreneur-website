@@ -1,0 +1,40 @@
+{% extends "@User/layout.html.twig" %}
+
+
+{% block dashbordContent %}
+
+    <div class="container">
+        <h1 class="mb-5 mt-5">
+            Créer un article</h1>
+
+        {{form_start(form,{'attr':{novalidate:'novalidate'}})}}
+
+        <div class="form-group">
+            <label for="title">titre</label>
+
+
+            {{form_widget(form.title)}}
+        </div>
+        <div class=" col-md-6" style="color:white; background-color:#E24B46; border:1px solid #E24B46; border-radius:4px;">
+            {{ form_errors(form.title) }}
+        </div>
+
+        <div class="form-group">
+            <label for="content">contenu</label>
+            {{form_widget(form.description)}}
+            <div class=" col-md-6" style="color:white; background-color:#E24B46; border:1px solid #E24B46; border-radius:4px;">{{ form_errors(form.description) }}</div>
+
+        </div>
+        <div class="form-group">
+            <label for="image">image</label>
+            {{form_widget(form.image)}}
+        </div>
+        <div class="col-md-6" style="color:white; background-color:#E24B46; border:1px solid #E24B46; border-radius:4px;">
+            {{ form_errors(form.image) }}</div>
+        <div class="form-group">
+            <label for="category">category</label>
+            {{form_widget(form.category)}}
+        </div>
+        {{form_end(form)}}
+    </div>
+{% endblock %}

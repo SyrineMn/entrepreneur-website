@@ -1,0 +1,63 @@
+{% extends "@User/layout.html.twig" %}
+{% block dashbordContent %}
+
+    <!-- DataTables Example -->
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{path('adminDashboard')}}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Gestion des condidatures</li>
+        </ol>
+        <h1 class="text-primary">Gestion des Candidatures</h1>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Candidatures</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+                        <thead>
+                            <tr>
+                                <th>username</th>
+                                <th>email</th>
+                                <th>offre de travail</th>
+                                <th>Date d'envoi</th>
+
+                                <th>lettre De motivation</th>
+                                <th>cv</th>
+                                <th>Consulter</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <!--show the articles-->
+
+                            ...
+
+                            {% for condidature in condidatures %}
+                                <tr>
+                                    <td>{{condidature.condidat.username}}</td>
+                                    <td>{{condidature.condidat.email}}</td>
+                                    <td>{{condidature.offreTravail.title}}</td>
+                                    <td>{{condidature.updatedAt | ago }}</td>
+                                    <td>{{condidature.lettreDeMotivation  | slice (0,100) | raw | striptags }}..</td>
+                                    <td>
+                                        <a href="{{ asset(condidature.cv) }}">View cv (PDF)</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{path('consulter-candidature',{'id':condidature.id})}}">
+                                            Consulter
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

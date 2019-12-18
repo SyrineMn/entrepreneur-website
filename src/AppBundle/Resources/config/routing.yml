@@ -1,0 +1,20 @@
+user_homepage:
+    path:     /showBlog
+    defaults: { _controller: AppBundle:Default:showArticle }
+    methods: [POST, GET]
+showBlogArticle:
+    path:     /blog/showBlogArticle/{slug}
+    defaults: { _controller: AppBundle:Default:showBlogArticle }
+    methods: [POST, GET]
+homepage:
+    path:    /
+    defaults: { _controller: AppBundle:Default:index}
+    methods: [POST, GET]
+boite-outils:
+    path:    /boite-outils
+    defaults: { _controller: AppBundle:Default:boiteOutils}
+creation-entreprise:    /creation-entreprise/{slug}
+    defaults: { _controller: AppBundle:Default:creationEntreprise}
+nombre-candidatures: 
+    path: /nombre-condidatures
+    defaults: { _controller: AppBundle:Default:nombreCandidatures}

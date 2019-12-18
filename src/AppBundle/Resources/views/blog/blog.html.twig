@@ -1,0 +1,73 @@
+{% extends "@App/layout.html.twig" %}
+	{% block content %}
+			<section>
+			
+				<div class="row callout bgcolor text-center">	
+						<h2>Blog et Actualités</h2>
+						<p style="font-size:20px;"><a href="{{path('homepage')}}">Accueil</a> &nbsp;&nbsp; <i class="fa fa-chevron-right" style="font-size:15px;"></i> &nbsp;&nbsp; Actualités</p>  
+</p>
+				</div><!-- end row -->
+			
+		</section><!-- end section -->
+
+		<section class="section">
+			<div class="container">
+				
+                    <div class="sidebar col-md-4 col-sm-4" >
+                    	<div class="widget clearfix">
+                    		<h4 class="widget-title">Subscribe</h4>
+                    		<div class="newsletter-widget">
+                    			<p>You can opt out of our newsletters at any time. See our privacy policy.</p>
+		                        <form class="form-inline" role="search">
+		                            <div class="form-1">
+		                              	<input type="text" class="form-control" placeholder="Enter email here..">
+										<button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i></button>
+		                            </div>
+								</form>
+                    		</div><!-- end newsletter -->
+                    	</div><!-- end widget -->
+
+                   
+
+                    	<div class="widget clearfix">
+                    		<h4 class="widget-title">Catégories</h4>
+                    		<div class="category-widget">
+                    			<ul>
+                                    {% for category in categories %}
+									<li><a href="#">{{category.nameOfCategory}}</a></li>	
+									{% endfor %}
+                    			</ul>
+                    		</div><!-- end category -->
+                    	</div><!-- end widget -->
+                    </div><!-- end col -->
+                    <div class="content col-md-8 blog-alt">
+					{% set runtimeConfig = {"thumbnail": {"size": [1000, 600] }} %}
+                    <div class="count">
+                    
+                    </div>
+                    {% for article in pagination %}
+					 
+						<div class="blog-box clearfix">
+						<div class="media-box">
+								<a href="{{path('showBlogArticle', {'slug':article.slug})}}" title=""><img src="{{ asset('uploads/images/'~ article.image) | imagine_filter('my_thumb', runtimeConfig)}}" alt="" class="img-responsive img-thumbnail"/></a>
+							</div><!-- end media-box -->
+							
+							<div class="blog-desc">
+								
+								<h3>{{article.title}}</h3>
+								<p>{{article.description| striptags | slice(0, 400) | raw }} ...</p>
+								<a class="readmore" href="{{path('showBlogArticle', {'slug':article.slug})}}">Read more</a>
+							</div><!-- end blog-desc -->
+						</div><!-- end blogbox -->
+                         
+                    {% endfor %}
+					</div>
+				<div class="navigation" style="margin-left:35%;">
+             {{ knp_pagination_render(pagination) }}
+            </div>			
+			</div>	
+			
+		</section><!-- end section -->
+
+		
+{% endblock %}

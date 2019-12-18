@@ -1,0 +1,38 @@
+voirCondidatures:
+  path: /voirCondidatures/{id}
+  defaults: { _controller: JobsBundle:OffreTravail:voirCondidatures }
+gestionOffreTravail:
+  path: /gestionOffreTravail
+  defaults: { _controller: JobsBundle:OffreTravail:gestionOffreTravail }
+createOffreTravail:
+  path: /createOffreTravail
+  defaults: { _controller: JobsBundle:OffreTravail:createOffreTravail }
+  methods: [POST]
+deleteOffreTravail:
+  path: /deleteOffreTravail/{slug}
+  defaults: { _controller: JobsBundle:OffreTravail:deleteOffreTravail }
+  methods: [POST]
+showOffresTravail:
+  path: /offreTravail/showOffresTravail
+  defaults: { _controller: JobsBundle:offreTravail:showOffresTravail }
+  methods: [GET, POST]
+voirOffreTravail:
+  path: /offreTravail/{slug}
+  defaults: { _controller: JobsBundle:OffreTravail:voirOffreTravail }
+postuler:
+  path: /postuler/{slug}
+  defaults: { _controller: JobsBundle:OffreTravail:postuler }
+  Methods: [POST]
+gestionCondidatures:
+    path: /admin/gestion-condidatures
+    defaults: { _controller: JobsBundle:OffreTravail:gestionCondidatures}
+consulter-candidature:
+  path:    /admin/consulter-condidature/{id}
+  defaults: { _controller: JobsBundle:OffreTravail:consulterCandidature}
+mes-candidatures:
+    path: /mes-candidatures
+    defaults: { _controller: JobsBundle:OffreTravail:mesCandidatures}
+voir-candidature:
+    path: /voir-candidature/{id}
+    defaults: { _controller: JobsBundle:OffreTravail:voirCandidature}
+

@@ -1,0 +1,32 @@
+{% extends "@App/layout.html.twig" %}
+{% block content %}
+<div class="container">
+{% trans_default_domain 'FOSUserBundle' %}
+    <form style="margin:60px;" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+    <div class="form-group" id="fos_user_registration_form">
+    <div class="form-group">
+    <label for="email">Email </label>
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans,'style':'background-color:#E9EDF0;' } }) }}
+        {{ form_errors(form.email) }}</div>
+          <div class="form-group">
+       <label for="Username">Username </label>
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans,'style':'background-color:#E9EDF0;' } }) }}
+        {{ form_errors(form.username) }}</div>
+          <div class="form-group">
+        <label for="motdepasse">Mot de passe </label>
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'form.password'|trans,'style':'background-color:#E9EDF0;' } }) }}
+        {{ form_errors(form.plainPassword.first) }}</div>
+          <div class="form-group">
+        <label for="confirmermotdepasse"> Confirmer mot de passe </label>
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'form.password_confirmation'|trans,'style':'background-color:#E9EDF0;' } }) }}
+        {{ form_errors(form.plainPassword.second) }}</div>
+
+        {{ form_rest(form) }}
+
+    </div>
+    <div>
+        <input class="btn btn-lg btn-primary" type="submit"  style="margin-left:10%" value="{{ 'registration.submit'|trans }}"><br>
+        <a href="{{path('fos_user_security_login')}}" style="margin-left:10%" >Vous avez déjà un compte? se connecter </a>
+    </div>
+</form></div>
+{% endblock %}

@@ -1,0 +1,275 @@
+<!doctype html>
+<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+    <html
+    class="no-js " lang="en"> <!--<![endif]-->
+    <head>
+        <link
+        rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+        <!-- Basic -->
+        <meta charset="utf-8">
+        <meta
+        content="IE=edge" http-equiv="X-UA-Compatible">
+
+        <!-- Mobile Meta -->
+        <meta
+        content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+        <!-- Site Meta -->
+        <title>Auto-Entrepreneur</title>
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <meta
+        content="" name="author">
+
+        <!-- Site Icons -->
+        <link rel="shortcut icon" href="{{asset('template/images/favicon.ico')}}" type="image/x-icon"/>
+        <link
+        rel="apple-touch-icon" href="{{asset('template/images/apple-touch-icon.png')}}">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700" rel="stylesheet">
+        <!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+                                                  <script>tinymce.init({selector:'textarea'});</script>-->
+        <!-- Custom & Default Styles -->
+        <link rel="stylesheet" href="{{asset('template/css/font-awesome.min.css')}}"> <link rel="stylesheet" href="{{asset('template/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('template/css/animate.css')}}">
+        <link rel="stylesheet" href="{{asset('template/css/carousel.')}}">
+        <link rel="stylesheet" href="{{asset('template/css/style.css')}}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!--[if lt IE 9]>
+                        		<script src="js/vendor/html5shiv.min.js"></script>
+                        		<script src="js/vendor/respond.min.js"></script>
+                        	<![endif]-->
+
+    </head>
+    <body>
+
+        <div id="wrapper" style=" background-image: linear-gradient(to right, #1fa5dd , #1f5add);">
+
+            <header class="header site-header">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-default yamm">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a style="width:90px;" class="navbar-brand" href="index.html"><img src="{{asset('logo-abc3.png')}}"/></a>
+                            </div>
+                            <div class="navbar-collapse collapse" id="navbar">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active">
+                                        <a href="{{path('homepage')}}">Acceuil</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="{{path('creation-entreprise')}}">Création d'entreprise</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="{{path('boite-outils')}}">Boite à outils</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="{{path('showBlog')}}">Actualités</a>
+                                    </li>
+                                    <li class="active ">
+                                        <a href="{{path('showOffresTravail')}}">Offres d'emploi</a>
+                                    </li>
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <li class="active" style="margin-left:20px;margin-right:60px;margin-top:16px;">
+                                            <div aria-expanded="false" aria-haspopup="true" class=" dropdown-toggle" data-toggle="dropdown" id="alertsDropdown" role="button" style="color:black">
+                                                <p style="font-size:20px;">
+                                                    {{ app.user.username }}
+                                                    &nbsp;
+                                                    <i class="fa fa-sort-down"></i>
+                                                </p>
+                                            </div>
+                                            <div aria-labelledby="alertsDropdown" class="dropdown-menu dropup-menu-right">
+                                                {% if is_granted("ROLE_ADMIN") %}
+                                                    <a class="dropdown-item" href="{{path('adminDashboard')}}">
+                                                        Dashboard
+                                                    </a>
+                                                    <br>
+                                                {% endif %}
+                                                {% if is_granted("IS_AUTHENTICATED_FULLY") == true and is_granted("ROLE_ADMIN") == false %}
+                                                    {#<a class="dropdown-item" href="{{path('mes-candidatures')}}">
+                                                        ({{app.user.condidatures | length}})
+                                                        candidatures
+                                                    </a>#}
+
+                                                    <br>
+                                                {% endif %}
+                                                <a class="dropdown-item" href="{{path('fos_user_security_logout') }}">Déconnexion</a>
+
+                                            </div>
+                                        </li>
+                                    {% else %}
+                                        <li class="lastlink hidden-xs hidden-sm">
+                                            <a class="btn btn-primary" href="{{path('fos_user_security_login')}}">
+                                                <i class="fa fa-user" style="font-size:20px;"></i>
+                                                Se Connecter
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!--/.nav-collapse -->
+                        </div>
+                        <!--/.container-fluid -->
+                        <div></nav>
+                        <!-- end nav -->
+
+                    </div>
+                    <!-- end container -->
+                </header>
+                <!-- end header -->
+                <div id="content" style="background-color:white;"> {% block content %}{% endblock %}
+
+                    </div>
+
+                    <footer class="footer primary-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="widget clearfix">
+                                        <h4 class="widget-title">Subscribe</h4>
+                                        <div class="newsletter-widget">
+                                            <p>You can opt out of our newsletters at any time. See our privacy policy.</p>
+                                            <form class="form-inline" role="search">
+                                                <div class="form-1">
+                                                    <input class="form-control" placeholder="Enter email here.." type="text">
+                                                    <button class="btn btn-primary" type="submit">
+                                                        <i class="fa fa-envelope-o"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- end newsletter -->
+                                    </div>
+                                    <!-- end widget -->
+                                </div>
+                                <!-- end col -->
+                                <div class="col-md-2 col-sm-2">
+                                    <div class="widget clearfix">
+                                        <h4 class="widget-title">Mission</h4>
+                                        <p>ABC-Entrepreneur met à votre disposition les procédures et formalités administratives de création de votre entreprise. Ainsi,nous offrons plusieures opportunités de travails .</p>
+                                    </div>
+                                    <!-- end widget -->
+                                </div>
+                                <!-- end col -->
+                                <div class="col-md-2 col-sm-2">
+                                    <div class="widget clearfix">
+                                        <h4 class="widget-title">ABC-Entrepreneur</h4>
+                                        <ul>
+                                            <li><a href="#">Partenariats</a></li>
+                                            <li><a href="#">Mentions légales</a></li>
+                                            <li><a href="#">Cookies</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- end widget -->
+                                </div>
+                                <!-- end col -->
+
+                                <div class="col-md-2 col-sm-2">
+                                    <div class="widget clearfix">
+                                        <h4 class="widget-title">ACCES DIRECT</h4>
+                                        <ul>
+                                            <li><a href="#">Création d'entreprise</a></li>
+                                            <li><a href="#">Boite à outils</a></li>
+                                            <li><a href="#">Actualités</a></li>
+                                            <li><a href="#">Offres d'emploi</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- end widget -->
+                                </div>
+                                <!-- end col -->
+
+                                <div class="col-md-2 col-sm-2">
+                                    <div class="widget clearfix">
+                                        <h4 class="widget-title">Contact</h4>
+                                        <ul>
+                                            <li><a href="#">Facebook</a></li>
+                                            <li><a href="#">Twitter</a></li>
+                                            <li><a href="#">Google+</a></li>
+                                            <li><a href="#">Linkedin</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- end widget -->
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end container -->
+                    </footer>
+                    <!-- end primary-footer -->
+
+                    <div id="content"> {% block body %}{% endblock %}
+                        </div>
+
+                        <footer class="footer secondary-footer">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-center">2019 &copy;<a href="#">ABC-Entrepreneur</a>.</p>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12"></ul>-->
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end container -->
+                    </footer>
+                    <!-- end second footer -->
+                    <a class=" btn-lg back-to-top" id="back-to-top" role="button" style="position: fixed; bottom: 30px; right: 30px; display: none; background-color:#C3C6C5; color:black; border:3px solid #959796; border-radius:10px;">
+                        <i class="fa fa-chevron-up text-center"></i>
+                    </a>
+                </div>
+                <!-- end wrapper -->
+
+                <!-- jQuery Files -->
+                <script src="{{asset('template/js/jquery.min.js')}}"></script>
+                <script src="{{asset('template/js/bootstrap.min.js')}}"></script>
+                <script src="{{asset('template/js/parallax.js')}}"></script>
+                <script src="{{asset('template/js/animate.js')}}"></script>
+                <script src="{{asset('template/js/owl.carousel.js')}}"></script>
+                <script src="{{asset('template/js/custom.js')}}"></script>
+                <script>
+                    $(document).ready(function () {
+                        $(window).scroll(function () {
+                            if ($(this).scrollTop() > 50) {
+                                $('#back-to-top').fadeIn();
+                            } else {
+                                $('#back-to-top').fadeOut();
+                            }
+                        });
+                        // scroll body to 0px on click
+                        $('#back-to-top').click(function () {
+                            $('body,html').animate({
+                                scrollTop: 0
+                            }, 400);
+                            return false;
+                        });
+                    });
+                </script>
+                  {% for flashMessage in app.session.flashbag.get('success') %}
+
+    <div class="alert alert-success col-md-4 float-left" id="alert" role="alert" style="font-size: 20px; position: fixed; bottom: 10px; right: 10px;">
+ {{ flashMessage }}
+</div> 
+<script> setTimeout(function() {
+  $("#alert").fadeOut().empty();
+}, 4000); </script>
+{% endfor %}
+            </body>
+        </html>

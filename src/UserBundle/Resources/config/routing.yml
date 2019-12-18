@@ -1,0 +1,9 @@
+user_homepage:
+    path:     /layout
+    defaults: { _controller: UserBundle:Default:index }
+gestion-utilisateurs:
+    path: /admin/gestion-utilisateurs
+    defaults: { _controller: UserBundle:Default:gestionUtilisateurs }
+enable-user:
+    path: /admin/enable-user/{id}
+    defaults: { _controller: UserBundle:Default:enableUser}

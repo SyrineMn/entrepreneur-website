@@ -1,0 +1,41 @@
+{% extends "@User/layout.html.twig" %}
+
+
+{% block dashbordContent %}
+
+    <div class="container">
+        <h1 class="mb-5 mt-5">
+            Créer un offre de travail</h1>
+        {{form_start(form)}}
+        <div class="form-group">
+            <label for="title">titre</label>
+            {{form_widget(form.title,{ 'required': "required"})}}
+        </div>
+        <div class="form-group">
+            <label for="content">recruter</label>
+            {{form_widget(form.recruter)}}
+        </div>
+        <div class="form-group">
+            <label for="content">niveau d'études</label>
+            {{form_widget(form.niveauEtudes)}}
+        </div>
+        <div class="form-group">
+            <label for="content">Exprérience</label>
+            {{form_widget(form.experience)}}
+        </div>
+        <div class="form-group">
+            <label for="content">lieu</label>
+            {{form_widget(form.location)}}
+        </div>
+        <div class="form-group">
+            <label for="content">description</label>
+            {{form_widget(form.description)}}
+        </div>
+        <div class="form-group">
+            <label for="image">image</label>
+            {{form_widget(form.image)}}
+        </div>
+
+        {{form_end(form)}}
+    </div>
+</div>{% endblock %}

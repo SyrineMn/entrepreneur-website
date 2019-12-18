@@ -1,0 +1,78 @@
+{% extends "@User/layout.html.twig" %}
+{% block dashbordContent %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{path('adminDashboard')}}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Gestion des offres de travail</li>
+    </ol>
+    <h1 class="text-primary">Gestion des offres de travail</h1>
+    <div class="row mb-4 mt-3">
+        <div class="col-lg-9"></div>
+        <a class="btn btn-primary col-lg-2" href="{{path('createOffreTravail')}}">
+            <i class="fas fa-file"></i>
+            <span>Créer un offre de travail</span>
+        </a>
+    </div>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Offres de travail</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Crée le</th>
+                            <th>
+                                derniére modification
+                            </th>
+                            <th>description</th>
+                            <th>Settings</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!--show the articles-->
+                        {% if offresTravail is defined %}
+                            ...
+
+                            {% for offreTravail in offresTravail %}
+                                <tr>
+                                    <td>{{offreTravail.title}}</td>
+                                    <td>{{offreTravail.postedAt | date ('d/m/y') }}
+                                        at
+                                        {{offreTravail.postedAt | date ('H:i') }}</td>
+                                    <td>{{offreTravail.lastUpdatedAt | date ('d/m/y') }}
+                                        at
+                                        {{offreTravail.lastUpdatedAt | date ('H:i') }}</td>
+
+                                    <td>{{offreTravail.description | slice(0, 80)| raw }}
+                                        ...</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-light dropdown-toggle" data-toggle="dropdown" type="button">
+                                                <i class="fas fa-cog"></i>
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li class="divider">
+                                                    <a href="#">Editer</a>
+                                                </li>
+                                                <li class="divider">
+                                                    <a href="{{path('deleteOffreTravail', {'slug':offreTravail.slug})}}">Supprimer</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endblock %}

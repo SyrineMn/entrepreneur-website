@@ -1,0 +1,46 @@
+{% extends "@User/layout.html.twig"%}
+{% block dashbordContent %}
+    <div class=" mb-4 mt-3">
+        <a href="{{path('adminDashboard')}}" style="font-size:30px;" class="ml-3">
+            <i class="fa fa-arrow-left"></i>
+        </a>
+        <br>
+        <h3 class="ml-5" style="color:#C10A33;">
+            {{user.username}}
+        </h3>
+    </div>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            condidatures</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Lettre de motivation</th>
+                            <th>cv</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!--show the articles-->
+                        {% if condidatures is defined %}
+                            ...
+
+                            {% for condidature in condidatures %}
+                                <tr>
+                                    <td>{{condidature.title}}</td>
+                                    <td>{{condidature.cv}}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    {% endblock %}

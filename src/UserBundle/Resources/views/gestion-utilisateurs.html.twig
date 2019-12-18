@@ -1,0 +1,50 @@
+{% extends "@User/layout.html.twig" %}
+{% block dashbordContent %}
+  <!-- /.container-fluid -->
+  <div class="container-fluid">
+   <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{path('adminDashboard')}}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Gestion des Utilisateurs</li>
+        </ol>
+        <h1 class="text-primary">Gestion des utilisateurs</h1>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Users</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>email</th>
+                            <th>Settings</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!--show the articles-->
+                        {% if users is defined %}
+                            ...
+
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>
+                                        <a href="{{path('enable-user',{'id':user.id})}}"> {% if user.enabled == true %} désactiver {% elseif user.enabled == false %}activer {% endif %}</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Sticky Footer -->
+    </div>
+    {% endblock %}
+
